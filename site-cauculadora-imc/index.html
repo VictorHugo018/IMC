@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha Calculadora de IMC</title>
+    <link rel="stylesheet" href="assets/estilo.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Calculadora de IMC</h1>
+    </header>
+
+    <main>
+        <section class="info">
+            <h2>Como Funciona o IMC?</h2>
+            <p>O Índice de Massa Corporal (IMC) é uma medida que utiliza sua altura e peso para verificar se você está em uma faixa de peso saudável. Basta preencher os campos abaixo com sua altura e peso, e o resultado será calculado automaticamente.</p>
+        </section>
+
+        <div class="calculadora">
+            <img src="assets/img/imagem111.webp" alt="Imagem ilustrativa de saúde" class="imagem-calculadora">
+            <form class="formulario">
+                <label for="alturaM">Altura (m):</label>
+                <input type="text" id="alturaM" placeholder="Ex: 1.75">
+                
+                <label for="pesoKG">Peso (kg):</label>
+                <input type="text" id="pesoKG" placeholder="Ex: 70">
+                
+                <button type="button" id="botaoEnviar">Calcular IMC</button>
+                <div id="mensagem"></div>
+            </form>
+        </div>
+    </main>
+
+   
+    
+    <script>
+        function calcularIMC() {
+         var quadrado = document.getElementById("alturaM")
+         var peso = document.getElementById("pesoKG")
+
+         quadrado = parseFloat(quadrado.value)
+         peso = parseFloat(peso.value)
+
+         var alturapronta = quadrado **2
+         var imc = peso / alturapronta
+
+         document.getElementById('mensagem').innerHTML = ""
+
+         if (imc  < 18.5) {
+             const novoElemento = document.createElement('p');
+             novoElemento.textContent = 'Abaixo do peso';
+             document.getElementById('mensagem').appendChild(novoElemento);
+         }
+
+
+         if (imc  >= 18.5 && imc < 25) {
+             const novoElemento = document.createElement('p');
+             novoElemento.textContent = 'Peso normal';
+             document.getElementById('mensagem').appendChild(novoElemento);
+         }
+
+
+         if (imc  >= 25 && imc < 30) {
+             const novoElemento = document.createElement('p');
+             novoElemento.textContent = 'Sobre Peso';
+             document.getElementById('mensagem').appendChild(novoElemento);
+         }
+
+
+         if (imc  >= 30) {
+             const novoElemento = document.createElement('p');
+             novoElemento.textContent = 'Obesidade';
+             document.getElementById('mensagem').appendChild(novoElemento);
+         }
+     }
+
+    
+
+     var botao = document.getElementById("botaoEnviar")
+     botao.addEventListener('click', calcularIMC)
+
+     </script>
+</body>
+</html>
